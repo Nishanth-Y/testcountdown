@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Countdown Timer</title>
+		<link rel="stylesheet" href="./style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		
+		<h2>Countdown to BMSIT Utsav</h2>
+		<div class="countdown">
+			<div class="days__wrapper">
+				<div class="days"></div>
+				<span>Days</span>
+			</div>
+			<div class="hours__wrapper">
+				<div class="hours"></div>
+				<span>Hours</span>
+			</div>
+			<div class="minutes__wrapper">
+				<div class="minutes"></div>
+				<span>Minutes</span>
+			</div>
+			<div class="seconds__wrapper">
+				<div class="seconds"></div>
+				<span>Seconds</span>
+			</div>
+		</div>
+		<script>
+			let deadline = new Date('June 24, 2023 00:00:00').getTime();
+			let days = document.querySelector('.days'),
+				hours = document.querySelector('.hours'),
+				minutes = document.querySelector('.minutes'),
+				seconds = document.querySelector('.seconds');
+			let x = setInterval(() => {
+				let now = new Date().getTime();
+				let t = deadline - now;
+				days.textContent = Math.floor(t / (1000 * 60 * 60 * 24));
+				hours.textContent = Math.floor((t / (1000 * 60 * 60)) % 24);
+				minutes.textContent = Math.floor((t / (1000 * 60)) % 60);
+				seconds.textContent = Math.floor((t / 1000) % 60);
+				if (t < 0) {
+					clearInterval(x);
+				}
+			}, 1000);
+		</script>
+	</body>
+</html>
